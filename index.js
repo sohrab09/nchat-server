@@ -41,7 +41,7 @@ const server = app.listen(process.env.PORT || PORT, () =>
 );
 const io = socket(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "https://nassachatapp.netlify.app/",
     credentials: true,
   },
 });
