@@ -34,7 +34,7 @@ app.get('/', (req, res) => {
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 
-const server = app.listen(PORT, () =>
+const server = app.listen(process.env.PORT || PORT, () =>
   console.log(`Server Running On Port ${PORT}`)
 );
 const io = socket(server, {
