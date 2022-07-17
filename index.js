@@ -5,13 +5,15 @@ const authRoutes = require("./routes/auth");
 const messageRoutes = require("./routes/messages");
 const app = express();
 const socket = require("socket.io");
+require('dotenv').config()
+
 
 app.use(cors());
 app.use(express.json());
 
 
 const PORT = 5000;
-const MONGO_URL = `mongodb+srv://admin:admin@cluster0.d1aei.mongodb.net/?retryWrites=true&w=majority`
+const MONGO_URL = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.d1aei.mongodb.net/?retryWrites=true&w=majority`
 mongoose
   .connect(MONGO_URL, {
     useNewUrlParser: true,
