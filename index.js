@@ -39,13 +39,22 @@ app.use("/api/messages", messageRoutes);
 const server = app.listen(process.env.PORT || PORT, () =>
   console.log(`Server Running On Port ${PORT}`)
 );
-const io = socket(server, {
+// const io = socket(server, {
+//   cors: {
+//     origin: "https://nassachatapp.netlify.app/",
+//     credentials: false,
+//     methods: ["GET", "POST"],
+//   },
+// });
+
+const io = require("socket.io")(server,{
   cors: {
-    origin: "https://nassachatapp.netlify.app/",
-    credentials: false,
-    methods: ["GET", "POST"],
-  },
-});
+    origin: "*",
+    methods: ["PUT", "GET", "POST", "DELETE", "OPTIONS"],
+    allowedHeaders:["secretHeader"],
+    credentials: true
+  }
+  })
 
 global.onlineUsers = new Map();
 io.on("connection", (socket) => {
