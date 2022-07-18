@@ -49,7 +49,7 @@ const server = app.listen(process.env.PORT || PORT, () =>
 
 const io = require("socket.io")(server,{
   cors: {
-    origin: "*",
+    origin: "https://nassachatapp.netlify.app/",
     methods: ["PUT", "GET", "POST", "DELETE", "OPTIONS"],
     allowedHeaders:["secretHeader"],
     credentials: true
